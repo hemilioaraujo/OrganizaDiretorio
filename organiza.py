@@ -4,7 +4,8 @@ from pathlib import Path
 path = Path('.')
 suffixes = list({filepath.suffix[1:] for filepath in path.glob('*')})
 
-# print(suffixes)
+print(suffixes)
+print(path)
 
 def cria_pastas(suffixes):
 	for suffix in suffixes:
@@ -27,9 +28,10 @@ def move_itens(suffixes):
                 src = item
                 dst = Path('.')/f'{suffix}'
                 src = os.fspath(src)
-                dst = os.fspath(dst)
-                print(f'Origem: -> {src}\nDestino: -> {dst}')
-                shutil.move(src, dst)
+                if src != 'organiza.py':
+                    dst = os.fspath(dst)
+                    print(f'Origem: -> {src}\nDestino: -> {dst}')
+                    shutil.move(src, dst)
 
 
 cria_pastas(suffixes)
