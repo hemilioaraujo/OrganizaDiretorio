@@ -10,7 +10,9 @@ print(path)
 
 def cria_pastas(suffixes):
 	for suffix in suffixes:
-		os.mkdir(Path('.')/f'{suffix}')
+		directory = Path('.')/f'{suffix}'
+		if not directory.is_dir():
+			os.mkdir(Path('.')/f'{suffix}')
 		
 
 def get_itens_por_tipo(suffix):
